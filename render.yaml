@@ -1,0 +1,18 @@
+services:
+  - name: tp-serverless-site-3
+    type: web
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    region: frankfurt
+    envVars:
+      - key: DB_CONNECTION_STRING
+        fromDatabase:
+          name: tp-serverless-db-3
+          property: connectionString
+
+databases:
+  - name: tp-serverless-db-3
+    plan: free
+    region: frankfurt
